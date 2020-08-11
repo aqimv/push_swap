@@ -41,30 +41,39 @@ INCS = $(addprefix $(INC_DIR), $(INC))
 
 FLAGS = -g -Wall -Werror -Wextra -I$(INC_DIR)
 
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
 all: $(NAME)
 
-$(NAME): $(OBJS) $(PF_OBJS) # $(OBJ_DIR)
-		ar rc $(NAME) $(OBJS)
-		ranlib $(NAME)
-
-# $(OBJ_DIR):
-# 		@mkdir -p $@
-# 		mkdir -p $(PF_OBJ_DIR)
+$(NAME): $(OBJS) $(PF_OBJS)
+		@ar rc $(NAME) $(OBJS)
+		@ranlib $(NAME)
+		@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
+        @echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCS)
-		gcc $(FLAGS) -o $@ -c $<
+		@gcc $(FLAGS) -o $@ -c $<
+		@echo "$(GREEN).$(RESET)\c"
 
 $(PF_OBJ_DIR)%.o: $(SRC_PF_DIR)%.c $(INCS)
-		gcc $(FLAGS) -o $@ -c $<
+		@gcc $(FLAGS) -o $@ -c $<
+		@echo "$(GREEN).$(RESET)\c"
 
 clean:
 		@rm -f $(PF_OBJS)
+		@echo "$(NAME): $(RED)object files ft_printf were deleted$(RESET)"
 		@rm -rf $(PF_OBJ_DIR)
+		@echo "$(NAME): $(RED)$(PF_OBJ_DIR) was deleted$(RESET)"
 		@rm -f $(OBJS)
+		@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 		@rm -rf $(OBJ_DIR)
+		@echo "$(NAME): $(RED)$(OBJ_DIR) was deleted$(RESET)"
 
 fclean: clean
 		@rm -f $(NAME)
+		@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
 re: fclean all
 

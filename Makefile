@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME_CHECKER = checker
+NAME_PUSH_SWAP = push_swap
 
 SRC_DIR = ./srcs/
 SRC =   checker.c \
@@ -46,33 +47,49 @@ LIB_SRC_DIR = ./libft/srcs/
 
 FLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
 
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+
 all: $(NAME_CHECKER)
 
 $(NAME_CHECKER): $(OBJ_DIR) $(LIB_OBJS) $(PF_OBJ_DIR) $(OBJS)
-		clang $(OBJS) ./libft/libft.a -o $(NAME_CHECKER)
+		@clang $(OBJS) ./libft/libft.a -o $(NAME_CHECKER)
+		@echo "\n$(NAME_PUSH_SWAP): $(GREEN)$(NAME_CHECKER) object files were created$(RESET)"
+		@echo "$(NAME_PUSH_SWAP): $(GREEN)$(NAME_CHECKER) was created$(RESET)"
 
 $(OBJ_DIR):
-		mkdir -p $@
-		mkdir -p $(LIB_OBJ_DIR)
-		mkdir -p ./libft/obj/ft_printf/
+		@mkdir -p $(LIB_OBJ_DIR)
+		@echo "libft: $(GREEN)$(LIB_OBJ_DIR) was created$(RESET)"
+		@mkdir -p ./libft/obj/ft_printf/
+		@echo "libft: $(GREEN)./libft/obj/ft_printf/ was created$(RESET)"
+		@mkdir -p $@
+		@echo "$(NAME_PUSH_SWAP): $(GREEN)$(LIB_OBJ_DIR) was created$(RESET)"
 
 $(LIB_OBJ_DIR)%.o: $(LIB_SRC_DIR)%.c $(LIB_INCS)
-		make -C ./libft/
+		@echo "$(NAME_PUSH_SWAP): $(GREEN)creating libft...$(RESET)"
+		@make -C ./libft/
 
 $(PF_OBJ_DIR)%.o: $(SRC_PF_DIR)%.c $(LIB_INCS)
-		make -C ./libft/
+		@echo "$(NAME_PUSH_SWAP): $(GREEN)creating libft/ft_printf...$(RESET)"
+		@make -C ./libft/
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCS)
-		clang $(FLAGS) -o $@ -c $<
+		@clang $(FLAGS) -o $@ -c $<
+		@echo "$(GREEN).$(RESET)\c"
 
 clean:
 		@make clean -C libft
 		@rm -f $(OBJS)
 		@rm -rf $(OBJ_DIR)
+		@echo "$(NAME_PUSH_SWAP): $(RED)$(OBJ_DIR) was deleted$(RESET)"
+		@echo "$(NAME_PUSH_SWAP): $(RED)object files were deleted$(RESET)"
 
 fclean: clean
 		@make fclean -C libft
-		@rm -f $(NAME)
+		@rm -f $(NAME_CHECKER)
+        @echo "$(NAME_PUSH_SWAP): $(RED)$(NAME_PUSH_SWAP) was deleted$(RESET)"
+
 
 re: fclean all
 

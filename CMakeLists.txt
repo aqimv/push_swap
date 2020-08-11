@@ -1,39 +1,28 @@
 cmake_minimum_required(VERSION 3.16)
-project(ps C)
+project(push_swap C)
 
 set(CMAKE_C_STANDARD 11)
 
+include_directories(includes)
 include_directories(libft/includes)
 
-add_executable(ps
-        libft/includes/ft_printf.h
-        libft/includes/get_next_line.h
-        libft/includes/libft.h
-        libft/srcs/ft_printf/char.c
-        libft/srcs/ft_printf/float.c
-        libft/srcs/ft_printf/float2.c
-        libft/srcs/ft_printf/float3.c
-        libft/srcs/ft_printf/ft_printf.c
-        libft/srcs/ft_printf/hex.c
-        libft/srcs/ft_printf/init.c
-        libft/srcs/ft_printf/int.c
-        libft/srcs/ft_printf/octal.c
-        libft/srcs/ft_printf/pointer.c
-        libft/srcs/ft_printf/setters.c
-        libft/srcs/ft_printf/string.c
-        libft/srcs/ft_printf/unsignedint.c
-        libft/srcs/ft_printf/utils.c
-        libft/srcs/ft_printf/utils2.c
-        libft/srcs/ft_printf/utils3.c
+add_executable(push_swap
+        includes/push_swap.h
+		includes/get_next_line.h
+		includes/libft.h
         libft/srcs/ft_atoi.c
         libft/srcs/ft_bzero.c
+        libft/srcs/ft_countwords.c
         libft/srcs/ft_isalnum.c
         libft/srcs/ft_isalpha.c
         libft/srcs/ft_isascii.c
         libft/srcs/ft_isdigit.c
         libft/srcs/ft_isprint.c
         libft/srcs/ft_itoa.c
-        libft/srcs/ft_lowercase.c
+        libft/srcs/ft_list_create_elem.c
+        libft/srcs/ft_list_push_back.c
+        libft/srcs/ft_list_push_front.c
+        libft/srcs/ft_list_size.c
         libft/srcs/ft_lstadd.c
         libft/srcs/ft_lstdel.c
         libft/srcs/ft_lstdelone.c
@@ -56,8 +45,6 @@ add_executable(ps
         libft/srcs/ft_putnbr_fd.c
         libft/srcs/ft_putstr.c
         libft/srcs/ft_putstr_fd.c
-        libft/srcs/ft_range.c
-        libft/srcs/ft_sqrt.c
         libft/srcs/ft_strcat.c
         libft/srcs/ft_strchr.c
         libft/srcs/ft_strclr.c
@@ -86,6 +73,9 @@ add_executable(ps
         libft/srcs/ft_strtrim.c
         libft/srcs/ft_tolower.c
         libft/srcs/ft_toupper.c
-        libft/srcs/ft_uppercase.c
-        libft/srcs/ft_wordcounter.c
-        libft/srcs/get_next_line.c)
+        libft/srcs/get_next_line.c
+        srcs/checker.c
+        srcs/commands.c
+        srcs/commands2.c
+        srcs/oper_lists.c
+        srcs/oper_lists2.c)

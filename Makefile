@@ -49,7 +49,7 @@ FLAGS = -Wall -Wextra -Werror -I$(INC_DIR)
 all: $(NAME_CHECKER)
 
 $(NAME_CHECKER): $(OBJ_DIR) $(LIB_OBJS) $(PF_OBJ_DIR) $(OBJS)
-		clang $(OBJS) ./libft/libft.a -o $(NAME)
+		clang $(OBJS) ./libft/libft.a -o $(NAME_CHECKER)
 
 $(OBJ_DIR):
 		mkdir -p $@

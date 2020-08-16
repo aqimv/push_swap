@@ -94,4 +94,4 @@ add_executable(ps
         srcs/commands.c
         srcs/commands2.c
         srcs/oper_lists.c
-        srcs/oper_lists2.c)
+        srcs/oper_lists2.c includes/push_swap.h srcs/checker.c srcs/chunk.c srcs/chunk2.c srcs/ft_data.c srcs/ft_error.c srcs/ft_info.c srcs/ft_isnum.c srcs/ft_newatoi.c srcs/ft_push.c srcs/ft_reverse_rotate.c srcs/ft_rotate.c srcs/ft_sort_six.c srcs/ft_stack.c srcs/ft_swap.c srcs/ft_valid.c srcs/go_ft.c srcs/push_swap.c srcs/sort_insert.c srcs/sort_insert2.c srcs/sort_insert3.c srcs/sort_six.c)

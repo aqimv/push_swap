@@ -1,31 +1,29 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: cspaghet <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/08/01 17:25:05 by cspaghet          #+#    #+#              #
-#    Updated: 2020/08/01 17:25:11 by cspaghet         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME_CHECKER = checker
 NAME_PUSH_SWAP = push_swap
 
 SRC_DIR = ./srcs/
-SRC =   checker.c \
-        commands.c \
-        commands2.c \
-        oper_lists.c \
-        oper_lists2.c \
+SRC =   			ft_data.c ft_push.c ft_reverse_rotate.c \
+					ft_rotate.c ft_stack.c ft_swap.c ft_valid.c \
+					ft_error.c ft_isnum.c ft_newatoi.c
+SRC_PUSH_SWAP =		push_swap.c ft_info.c sort_insert.c sort_insert2.c \
+					sort_insert3.c sort_six.c chunk.c chunk2.c ft_sort_six.c
+SRC_CHECKER =		checker.c go_ft.c
 
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
+SRCS_PUSH_SWAP = $(addprefix $(SRC_DIR), $(SRC_PUSH_SWAP))
+SRCS_CHECKER = $(addprefix $(SRC_DIR), $(SRC_CHECKER))
+
 
 OBJ_DIR = ./obj/
 OBJ = $(SRC:.c=.o)
+OBJ_PUSH_SWAP = $(SRC_PUSH_SWAP:.c=.o)
+OBJ_CHECKER = $(SRC_CHECKER:.c=.o)
+
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ))
+OBJS_PUSH_SWAP = $(addprefix $(OBJ_DIR), $(OBJ_PUSH_SWAP))
+OBJS_CHECKER = $(addprefix $(OBJ_DIR), $(OBJ_CHECKER))
+
 
 INC = push_swap.h
 INC_DIR = ./includes/
@@ -51,10 +49,15 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-all: $(NAME_CHECKER)
+all: $(NAME_PUSH_SWAP) $(NAME_CHECKER)
 
-$(NAME_CHECKER): $(OBJ_DIR) $(LIB_OBJS) $(PF_OBJ_DIR) $(OBJS)
-		@clang $(OBJS) ./libft/libft.a -o $(NAME_CHECKER)
+$(NAME_PUSH_SWAP): $(OBJ_DIR) $(LIB_OBJS) $(PF_OBJ_DIR) $(OBJS) $(OBJS_PUSH_SWAP)
+		@clang $(OBJS) $(OBJS_PUSH_SWAP) ./libft/libft.a -o $(NAME_PUSH_SWAP)
+		@echo "\n$(NAME_PUSH_SWAP): $(GREEN)$(NAME_PUSH_SWAP) object files were created$(RESET)"
+		@echo "$(NAME_PUSH_SWAP): $(GREEN)$(NAME_PUSH_SWAP) was created$(RESET)"
+
+$(NAME_CHECKER): $(OBJ_DIR) $(LIB_OBJS) $(PF_OBJ_DIR) $(OBJS) $(OBJS_CHECKER)
+		@clang $(OBJS) $(OBJS_CHECKER) ./libft/libft.a -o $(NAME_CHECKER)
 		@echo "\n$(NAME_PUSH_SWAP): $(GREEN)$(NAME_CHECKER) object files were created$(RESET)"
 		@echo "$(NAME_PUSH_SWAP): $(GREEN)$(NAME_CHECKER) was created$(RESET)"
 
@@ -87,8 +90,10 @@ clean:
 
 fclean: clean
 		@make fclean -C libft
+		@rm -f $(NAME_PUSH_SWAP)
+		@echo "$(NAME_PUSH_SWAP): $(RED)$(NAME_PUSH_SWAP) was deleted$(RESET)"
 		@rm -f $(NAME_CHECKER)
-        @echo "$(NAME_PUSH_SWAP): $(RED)$(NAME_PUSH_SWAP) was deleted$(RESET)"
+        @echo "$(NAME_PUSH_SWAP): $(RED)$(NAME_CHECKER) was deleted$(RESET)"
 
 
 re: fclean all

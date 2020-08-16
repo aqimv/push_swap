@@ -72,4 +72,6 @@ void	sort_insert(t_data *frame)
 		even_chunk(frame, &arr, chunk_id, chunk_len);
 	while (info_stack_len(frame->b))
 		to_a(frame, &arr);
+	free(arr.m);
+	arr.m = NULL;
 }

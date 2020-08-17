@@ -71,4 +71,3 @@ void	ft_data_free(t_data *data)
 		ft_stack_del_top(&data->b);
 	free(data);
 }
-

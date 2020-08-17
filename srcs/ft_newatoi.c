@@ -18,7 +18,7 @@ int				first_ind(char *s)
 
 	i = 0;
 	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\v' ||
-		   s[i] == '\t' || s[i] == '\r' || s[i] == '\f')
+		s[i] == '\t' || s[i] == '\r' || s[i] == '\f')
 		i++;
 	return (i);
 }

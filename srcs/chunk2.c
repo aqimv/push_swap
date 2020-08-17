@@ -40,8 +40,7 @@ void	even_chunk(t_data *frame, t_arrint *arr, int chunk_id, int chunk_len)
 		{
 			if (arr_cmp(arr, chunk_id / 2 + k, frame->a->num, chunk_len))
 				to_up(frame, &i);
-			else if (arr_cmp(arr, chunk_id / 2 - 1 - k, frame->a->num,
-							 chunk_len))
+			else if (arr_cmp(arr, chunk_id / 2 - 1 - k, frame->a->num, chunk_len))
 				to_down(frame, &j);
 			else
 				ra(frame, 0);
@@ -51,4 +50,3 @@ void	even_chunk(t_data *frame, t_arrint *arr, int chunk_id, int chunk_len)
 		i = 0;
 	}
 }
-

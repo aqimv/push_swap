@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skennith <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/17 19:39:14 by skennith          #+#    #+#             */
+/*   Updated: 2020/08/17 19:39:16 by skennith         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include "libft.h"
 # include "get_next_line.h"
-
 
 typedef struct	s_stack
 {
@@ -72,11 +83,11 @@ int				get_id(t_stack *stack, int num);
 void			to_up(t_data *frame, int *i);
 void			to_down(t_data *frame, int *i);
 void			even_chunk(t_data *frame, t_arrint *arr,
-						   int chunk_id, int chunk_len);
+					int chunk_id, int chunk_len);
 void			solution_odd(t_data *frame, t_arrint *arr,
-							 int chunk_id, int chunk_len);
+					int chunk_id, int chunk_len);
 void			odd_chunk(t_data *frame, t_arrint *arr,
-						  int chunk_id, int chunk_len);
+					int chunk_id, int chunk_len);
 int				ft_chunk_len(int len);
 void			get_max_arr(t_data *frame, t_arrint *arr, int *max_arr);
 void			to_a(t_data *frame, t_arrint *arr);
@@ -91,4 +102,5 @@ int				get_id(t_stack *stack, int num);
 int				*sort_arr(int *arr, int size);
 int				*create_arr(t_stack *stack, int *len);
 int				arr_cmp(t_arrint *arr, int chunk, int num, int chunk_len);
+
 #endif

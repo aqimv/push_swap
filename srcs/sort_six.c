@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_six.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: skennith <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/17 18:20:42 by skennith          #+#    #+#             */
+/*   Updated: 2020/08/17 18:20:45 by skennith         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -46,10 +57,20 @@ void	sort4(t_data *frame)
 
 	min = info_min(frame->a);
 	id = get_id(frame->a, min);
+	id--;
 	if (id > info_stack_len(frame->a) / 2 + info_stack_len(frame->a) % 2)
-		ra_pb(frame, id);
+	{
+		id = info_stack_len(frame->a) - id;
+		while (id-- > 0)
+			rra(frame, 0);
+		pb(frame, 0);
+	}
 	else
-		rra_pb(frame, id);
+	{
+		while (id-- > 0)
+			ra(frame, 0);
+		pb(frame, 0);
+	}
 	sort3(frame);
 	pa(frame, 0);
 }
@@ -61,10 +82,20 @@ void	sort5(t_data *frame)
 
 	min = info_min(frame->a);
 	id = get_id(frame->a, min);
+	id--;
 	if (id > info_stack_len(frame->a) / 2 + info_stack_len(frame->a) % 2)
-		ra_pb(frame, id);
+	{
+		id = info_stack_len(frame->a) - id;
+		while (id-- > 0)
+			rra(frame, 0);
+		pb(frame, 0);
+	}
 	else
-		rra_pb(frame, id);
+	{
+		while (id-- > 0)
+			ra(frame, 0);
+		pb(frame, 0);
+	}
 	sort4(frame);
 	pa(frame, 0);
 }

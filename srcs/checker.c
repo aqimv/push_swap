@@ -20,8 +20,9 @@ void	checker(t_data *frame, int mode)
 	while ((get_next_line(0, &line)) == 1)
 	{
 		go_ft(line, frame);
-		free(line);
+		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 }
 
 void	sort_test(t_data *frame)

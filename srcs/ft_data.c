@@ -42,7 +42,7 @@ t_data	*ft_data_create(char **arg)
 	char			*str;
 	long long int	num;
 
-	if ((data = malloc(sizeof(t_data))) == NULL)
+	if ((data = (t_data *)malloc(sizeof(t_data))) == NULL)
 		return (NULL);
 	data->a = NULL;
 	data->b = NULL;

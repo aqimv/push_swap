@@ -6,7 +6,7 @@
 /*   By: skennith <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/17 18:24:12 by skennith          #+#    #+#             */
-/*   Updated: 2020/08/17 18:24:15 by skennith         ###   ########.fr       */
+/*   Updated: 2020/08/20 18:06:38 by skennith         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	even_chunk(t_data *frame, t_arrint *arr, int chunk_id, int chunk_len)
 		{
 			if (arr_cmp(arr, chunk_id / 2 + k, frame->a->num, chunk_len))
 				to_up(frame, &i);
-			else if (arr_cmp(arr, chunk_id / 2 - 1 - k, frame->a->num, chunk_len))
+			else if (arr_cmp(arr, chunk_id / 2 - 1 - k, \
+						frame->a->num, chunk_len))
 				to_down(frame, &j);
 			else
 				ra(frame, 0);
